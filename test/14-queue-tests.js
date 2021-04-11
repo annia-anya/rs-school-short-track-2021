@@ -2,10 +2,11 @@ const proxyquire = require('proxyquire');
 const sinon = require('sinon');
 const assert = require('assert');
 it.optional = require('../extensions/it-optional');
+const ListNode = require('../extensions/list-node');
 
 describe('14-queue', () => {
   const sandbox = sinon.createSandbox();
-  const ListNodeStub = sandbox.stub();
+  const ListNodeStub = sandbox.spy(ListNode);
   const Queue = proxyquire('../src/14-queue', {
     '../extensions/list-node': ListNodeStub,
   });
